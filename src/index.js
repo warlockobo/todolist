@@ -1,6 +1,7 @@
 import './style.css';
 import { Todo } from './Todo.js';
 import { Project } from './Project.js';
+import TodoManager from './todoManager.js';
 
 console.log('Webpack is working!');
 
@@ -16,9 +17,16 @@ function testClasses() {
     console.log('Project todos count:', project.getTodoCount());
 }
 
+// Test the TodoManager
+function testTodoManager() {
+    const manager = new TodoManager();
+    console.log('TodoManager created:', manager.getCurrentProject());
+}
+
 function initTodoApp() {
     console.log('Todo app initialized');
     testClasses();
+    testTodoManager();
 }
 
 initTodoApp(); 
