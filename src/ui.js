@@ -70,7 +70,7 @@ class UI {
                 ${project.name !== 'Default' ? `<button class="project-delete-btn" title="Delete project">&times;</button>` : ''}
             `;
             
-            li.querySelector('.project-btn').addEventListener('click', () => {
+            li.querySelector('.project-info').addEventListener('click', () => {
                 this.todoManager.setCurrentProject(project.id);
                 this.render();
             });
