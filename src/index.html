@@ -7,10 +7,31 @@
 </head>
 <body>
     <div id="app">
-        <h1>Todo List</h1>
-        <div id="todo-container">
-
-        </div>
+        <header>
+            <h1>Todo List</h1>
+        </header>
+        
+        <main class="main-content">
+            <aside class="sidebar">
+                <div class="projects-section">
+                    <h2>Projects</h2>
+                    <button id="new-project-btn" class="btn btn-primary">+ New Project</button>
+                    <ul id="projects-list" class="projects-list">
+                        <!-- Projects will be listed here -->
+                    </ul>
+                </div>
+            </aside>
+            
+            <section class="todo-section">
+                <div class="todo-header">
+                    <h2 id="current-project-name">Default</h2>
+                    <button id="new-todo-btn" class="btn btn-primary">+ New Todo</button>
+                </div>
+                <div id="todos-container" class="todos-container">
+                    <!-- Todo items will be listed here -->
+                </div>
+            </section>
+        </main>
     </div>
 </body>
 </html> 

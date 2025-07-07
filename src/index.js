@@ -29,6 +29,15 @@ function testTodoManager() {
     
     manager.toggleTodoComplete(todo.id);
     console.log('Todo after toggle:', todo);
+    
+    // Test storage
+    const storage = new Storage();
+    const testData = { test: 'data', projects: manager.getAllProjects() };
+    storage.saveData(testData);
+    console.log('Saved data to localStorage');
+    
+    const loadedData = storage.loadData();
+    console.log('Loaded data from localStorage:', loadedData);
 }
 
 function initTodoApp() {
