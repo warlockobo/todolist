@@ -93,5 +93,23 @@
             </form>
         </div>
     </div>
+
+    <!-- Delete Project Modal -->
+    <div id="delete-project-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Delete Project</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete "<span id="delete-project-name"></span>"?</p>
+                <p class="warning-text">This will also delete all todos in this project. This action cannot be undone.</p>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancel-delete-project">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirm-delete-project">Delete Project</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html> 

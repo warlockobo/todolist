@@ -18,6 +18,7 @@ class UI {
         // Modal elements
         this.newProjectModal = document.getElementById('new-project-modal');
         this.newTodoModal = document.getElementById('new-todo-modal');
+        this.deleteProjectModal = document.getElementById('delete-project-modal');
         this.newProjectForm = document.getElementById('new-project-form');
         this.newTodoForm = document.getElementById('new-todo-form');
     }
@@ -29,10 +30,12 @@ class UI {
         // Modal close buttons
         this.newProjectModal.querySelector('.modal-close').addEventListener('click', () => this.hideNewProjectModal());
         this.newTodoModal.querySelector('.modal-close').addEventListener('click', () => this.hideNewTodoModal());
+        this.deleteProjectModal.querySelector('.modal-close').addEventListener('click', () => this.hideDeleteProjectModal());
         
         // Cancel buttons
         document.getElementById('cancel-project').addEventListener('click', () => this.hideNewProjectModal());
         document.getElementById('cancel-todo').addEventListener('click', () => this.hideNewTodoModal());
+        document.getElementById('cancel-delete-project').addEventListener('click', () => this.hideDeleteProjectModal());
         
         // Form submissions
         this.newProjectForm.addEventListener('submit', (e) => this.handleNewProjectSubmit(e));
@@ -45,6 +48,12 @@ class UI {
         this.newTodoModal.addEventListener('click', (e) => {
             if (e.target === this.newTodoModal) this.hideNewTodoModal();
         });
+        this.deleteProjectModal.addEventListener('click', (e) => {
+            if (e.target === this.deleteProjectModal) this.hideDeleteProjectModal();
+        });
+        
+        // Delete project confirmation
+        document.getElementById('confirm-delete-project').addEventListener('click', () => this.confirmDeleteProject());
     }
 
     render() {
@@ -199,8 +208,20 @@ class UI {
     }
 
     deleteProject(project) {
-        if (confirm(`Are you sure you want to delete "${project.name}"? This will also delete all todos in this project.`)) {
-            this.todoManager.deleteProject(project.id);
+        this.projectToDelete = project;
+        document.getElementById('delete-project-name').textContent = project.name;
+        this.deleteProjectModal.classList.add('show');
+    }
+
+    hideDeleteProjectModal() {
+        this.deleteProjectModal.classList.remove('show');
+        this.projectToDelete = null;
+    }
+
+    confirmDeleteProject() {
+        if (this.projectToDelete) {
+            this.todoManager.deleteProject(this.projectToDelete.id);
+            this.hideDeleteProjectModal();
             this.render();
         }
     }

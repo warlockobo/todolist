@@ -102,7 +102,7 @@ header h1 {
 .project-item {
     margin-bottom: 12px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 8px;
 }
 
@@ -343,4 +343,23 @@ header h1 {
 
 .btn-secondary:hover {
     background: #7f8c8d;
+}
+
+.btn-danger {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.warning-text {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-top: 10px;
 } 
