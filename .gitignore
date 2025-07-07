@@ -137,3 +137,7 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Don't ignore built files for GitHub Pages
+!bundle.js
+!index.html
