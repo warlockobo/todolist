@@ -21,6 +21,13 @@ function testClasses() {
 function testTodoManager() {
     const manager = new TodoManager();
     console.log('TodoManager created:', manager.getCurrentProject());
+    
+    // Test creating a todo and toggling it
+    const todo = manager.createTodo('Test todo', 'Test description');
+    console.log('Created todo:', todo);
+    
+    manager.toggleTodoComplete(todo.id);
+    console.log('Todo after toggle:', todo);
 }
 
 function initTodoApp() {

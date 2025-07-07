@@ -48,6 +48,55 @@ class TodoManager {
             this.currentProject.removeTodo(todoId);
         }
     }
+
+    // Additional todo operations
+    toggleTodoComplete(todoId) {
+        if (this.currentProject) {
+            const todo = this.currentProject.getTodoById(todoId);
+            if (todo) {
+                todo.toggleComplete();
+                return todo;
+            }
+        }
+        return null;
+    }
+
+    updateTodo(todoId, updates) {
+        if (this.currentProject) {
+            const todo = this.currentProject.getTodoById(todoId);
+            if (todo) {
+                Object.keys(updates).forEach(key => {
+                    if (todo.hasOwnProperty(key)) {
+                        todo[key] = updates[key];
+                    }
+                });
+                return todo;
+            }
+        }
+        return null;
+    }
+
+    // Project queries
+    getAllProjects() {
+        return this.projects;
+    }
+
+    getProjectById(projectId) {
+        return this.projects.find(project => project.id === projectId);
+    }
+
+    // Todo queries
+    getTodosByPriority(priority) {
+        return this.currentProject ? this.currentProject.getTodosByPriority(priority) : [];
+    }
+
+    getCompletedTodos() {
+        return this.currentProject ? this.currentProject.getCompletedTodos() : [];
+    }
+
+    getIncompleteTodos() {
+        return this.currentProject ? this.currentProject.getIncompleteTodos() : [];
+    }
 }
 
 export default TodoManager; 
