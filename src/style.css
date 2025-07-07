@@ -98,7 +98,7 @@ header h1 {
     color: #999;
 }
 
-/* Project styles */
+
 .project-item {
     margin-bottom: 12px;
     display: flex;
@@ -167,7 +167,7 @@ header h1 {
     opacity: 1;
 }
 
-/* Todo styles */
+
 .todo-item {
     background: white;
     border: 1px solid #ddd;
@@ -257,7 +257,7 @@ header h1 {
     background: #c0392b;
 }
 
-/* Modal styles */
+
 .modal {
     display: none;
     position: fixed;
@@ -308,7 +308,7 @@ header h1 {
     color: #e74c3c;
 }
 
-/* Form styles */
+
 .form-group {
     margin-bottom: 15px;
     padding: 0 20px;
