@@ -2,6 +2,7 @@ import './style.css';
 import { Todo } from './Todo.js';
 import { Project } from './Project.js';
 import TodoManager from './todoManager.js';
+import Storage from './storage.js';
 
 console.log('Webpack is working!');
 
