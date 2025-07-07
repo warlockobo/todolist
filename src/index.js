@@ -5,8 +5,6 @@ import TodoManager from './todoManager.js';
 import Storage from './storage.js';
 import UI from './ui.js';
 
-console.log('Webpack is working!');
-
 
 
 function initTodoApp() {

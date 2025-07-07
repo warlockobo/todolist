@@ -27,6 +27,17 @@ class TodoManager {
         return project;
     }
 
+    deleteProject(projectId) {
+        this.projects = this.projects.filter(project => project.id !== projectId);
+        
+        // If we deleted the current project, switch to default
+        if (this.currentProject && this.currentProject.id === projectId) {
+            this.currentProject = this.projects[0] || null;
+        }
+        
+        this.saveData();
+    }
+
     setCurrentProject(projectId) {
         const project = this.projects.find(p => p.id === projectId);
         if (project) {

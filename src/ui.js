@@ -64,12 +64,21 @@ class UI {
                 <button class="project-btn ${project.id === this.todoManager.getCurrentProject()?.id ? 'active' : ''}">
                     ${project.name} (${project.getTodoCount()})
                 </button>
+                ${project.name !== 'Default' ? `<button class="project-delete-btn" title="Delete project">&times;</button>` : ''}
             `;
             
             li.querySelector('.project-btn').addEventListener('click', () => {
                 this.todoManager.setCurrentProject(project.id);
                 this.render();
             });
+            
+            const deleteBtn = li.querySelector('.project-delete-btn');
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.deleteProject(project);
+                });
+            }
             
             this.projectsList.appendChild(li);
         });
@@ -183,6 +192,13 @@ class UI {
             return 'Yesterday';
         } else {
             return format(date, 'MMM d, yyyy');
+        }
+    }
+
+    deleteProject(project) {
+        if (confirm(`Are you sure you want to delete "${project.name}"? This will also delete all todos in this project.`)) {
+            this.todoManager.deleteProject(project.id);
+            this.render();
         }
     }
 }

@@ -101,6 +101,9 @@ header h1 {
 /* Project styles */
 .project-item {
     margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .project-btn {
@@ -121,6 +124,26 @@ header h1 {
 
 .project-btn.active {
     background: #3498db;
+}
+
+.project-delete-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+
+.project-delete-btn:hover {
+    opacity: 1;
 }
 
 /* Todo styles */
