@@ -74,7 +74,7 @@ class UI {
                     <button class="project-btn ${project.id === this.todoManager.getCurrentProject()?.id ? 'active' : ''}">
                         ${project.name} (${project.getTodoCount()})
                     </button>
-                    ${project.description ? `<p class="project-description">${project.description}</p>` : ''}
+                    ${project.description ? `<p class="project-description ${project.id === this.todoManager.getCurrentProject()?.id ? 'active' : ''}">${project.description}</p>` : ''}
                 </div>
                 ${project.name !== 'Default' ? `<button class="project-delete-btn" title="Delete project">&times;</button>` : ''}
             `;
