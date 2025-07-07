@@ -1,3 +1,5 @@
+import { format, isToday, isTomorrow, isYesterday } from 'date-fns';
+
 class UI {
     constructor(todoManager) {
         this.todoManager = todoManager;
@@ -90,7 +92,7 @@ class UI {
 
     createTodoElement(todo) {
         const div = document.createElement('div');
-        div.className = `todo-item ${todo.completed ? 'completed' : ''}`;
+        div.className = `todo-item ${todo.completed ? 'completed' : ''} ${todo.isOverdue() ? 'overdue' : ''}`;
         div.innerHTML = `
             <div class="todo-header">
                 <input type="checkbox" ${todo.completed ? 'checked' : ''} class="todo-checkbox">
@@ -100,7 +102,7 @@ class UI {
             </div>
             <div class="todo-details">
                 <p class="todo-description">${todo.description}</p>
-                ${todo.dueDate ? `<p class="todo-due-date">Due: ${new Date(todo.dueDate).toLocaleDateString()}</p>` : ''}
+                ${todo.dueDate ? `<p class="todo-due-date">Due: ${this.formatDueDate(todo.dueDate)}</p>` : ''}
             </div>
         `;
 
@@ -168,6 +170,19 @@ class UI {
             this.todoManager.createTodo(title, description, dueDate || null, priority);
             this.hideNewTodoModal();
             this.render();
+        }
+    }
+
+    formatDueDate(dueDate) {
+        const date = new Date(dueDate);
+        if (isToday(date)) {
+            return 'Today';
+        } else if (isTomorrow(date)) {
+            return 'Tomorrow';
+        } else if (isYesterday(date)) {
+            return 'Yesterday';
+        } else {
+            return format(date, 'MMM d, yyyy');
         }
     }
 }
