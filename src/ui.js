@@ -61,9 +61,12 @@ class UI {
             const li = document.createElement('li');
             li.className = 'project-item';
             li.innerHTML = `
-                <button class="project-btn ${project.id === this.todoManager.getCurrentProject()?.id ? 'active' : ''}">
-                    ${project.name} (${project.getTodoCount()})
-                </button>
+                <div class="project-info">
+                    <button class="project-btn ${project.id === this.todoManager.getCurrentProject()?.id ? 'active' : ''}">
+                        ${project.name} (${project.getTodoCount()})
+                    </button>
+                    ${project.description ? `<p class="project-description">${project.description}</p>` : ''}
+                </div>
                 ${project.name !== 'Default' ? `<button class="project-delete-btn" title="Delete project">&times;</button>` : ''}
             `;
             
